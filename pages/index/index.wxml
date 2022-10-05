@@ -1,4 +1,10 @@
 <!--index.wxml-->
 <view class="container">
-  微信
+  <view class="nx_swiper">
+    <swiper autoplay indicator-dots circular interval="2000">
+        <swiper-item wx:for="{{goodsInfoCarouselList}}" wx:key="id">
+            <image src="{{item.url}}"></image>
+        </swiper-item>
+    </swiper>
+  </view>
 </view>
