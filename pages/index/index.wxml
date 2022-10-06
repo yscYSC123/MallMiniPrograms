@@ -9,18 +9,31 @@
     </swiper>
   </view>
   <!-- 推荐商品 -->
-  <view class="nx_congar">
-    <view class="nx_congar_title">推荐商品列表</view>
-    <view class="nx_congar_list">
-        <navigator class="nx_congar_item_3" wx:for="{{goodsInfoRecommendList}}" wx:for-item="item" wx:key="id" url="/pages/goodsInfo/index?id={{item.id}}">
-            <image mode="scaleToFill" src="{{item.url}}"></image>
-            <view class="nx_item_name">{{item.name}}</view>
-            <view style="font-size: 22rpx; margin-top: 10rpx;">
-                <view style="color: red;">￥{{item.price}}</view>
-                <view>已销{{item.sales}}件</view>
-            </view>
-        </navigator>
+    <view class="nx_congar">
+        <view class="nx_congar_title">推荐商品列表</view>
+        <view class="nx_congar_list">
+            <navigator class="nx_congar_item_3" wx:for="{{goodsInfoRecommendList}}" wx:for-item="item" wx:key="id" url="/pages/goodsInfo/index?id={{item.id}}">
+                <image mode="scaleToFill" src="{{item.url}}"></image>
+                <view class="nx_item_name">{{item.name}}</view>
+                <view style="font-size: 22rpx; margin-top: 10rpx;">
+                    <view style="color: red;">￥{{item.price}}</view>
+                    <view>已销售{{item.sales}}件</view>
+                </view>
+            </navigator>
+        </view>
     </view>
-  </view>
-
+    <!-- 热卖商品 -->
+    <view class="nx_congar">
+        <view class="nx_congar_title">热卖商品列表</view>
+        <view class="nx_congar_list">
+            <navigator class="nx_congar_item_3" wx:for="{{goodsInfoHotList}}" wx:for-item="item" wx:key="id" url="/pages/goodsInfo/index?id={{item.id}}">
+                <image mode="scaleToFill" src="{{item.url}}"></image>
+                <view class="nx_item_name">{{item.name}}</view>
+                <view style="font-size: 22rpx; margin-top: 10rpx;">
+                    <view style="color: red;">￥{{item.price}}</view>
+                    <view>已销售{{item.sales}}件</view>
+                </view>
+            </navigator>
+        </view>
+    </view>
 </view>
