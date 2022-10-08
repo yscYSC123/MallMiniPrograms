@@ -9,6 +9,7 @@ export const request = (params) => {
     const baseUrl = "http://localhost:8080";
     return new Promise((resolve,reject) => {
         wx.request({
+          ...params,
           url: baseUrl + params.url,
           success:(result) => {
               resolve(result.data);

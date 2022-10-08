@@ -1,2 +1,12 @@
-<!--pages/user/index.wxml-->
-<text>pages/user/index.wxml</text>
+<view class="user_info_wrap">
+    <view wx:if="{{isLogin === 1}}" class="user_img_wrap">
+        <image class="user_bg" src="../../imgs/head.jpg"></image>
+        <view class="user_info">
+            <image class="user_icon" src="{{userInfo.code}}"></image>
+            <view class="user_name">{{userInfo.name}}</view>
+        </view>
+    </view>
+    <view wx:else class="user_btn">
+        <button open-type="getUserInfo" bindgetuserinfo="getUserInfo">登录</button>
+    </view>
+</view>
