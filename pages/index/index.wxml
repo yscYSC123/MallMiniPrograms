@@ -4,7 +4,9 @@
   <view class="nx_swiper">
     <swiper autoplay indicator-dots circular interval="2000">
         <swiper-item wx:for="{{goodsInfoCarouselList}}" wx:key="id">
-            <image src="{{item.url}}"></image>
+            <navigator url="/pages/goodsInfo/index?id={{item.id}}">
+                <image src="{{item.url}}"></image>
+            </navigator>
         </swiper-item>
     </swiper>
   </view>

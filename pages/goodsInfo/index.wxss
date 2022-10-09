@@ -1,1 +1,13 @@
-/* pages/goodsInfo/index.wxss */
+page{
+    padding-bottom: 100rpx;
+}
+
+.nx_swiper swiper{
+    width:750rpx;
+    height: 400rpx;
+}
+
+.nx_swiper swiper image{
+    width:750rpx;
+    height: 400rpx;
+}

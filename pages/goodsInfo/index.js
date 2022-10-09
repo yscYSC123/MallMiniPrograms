@@ -1,66 +1,61 @@
-// pages/goodsInfo/index.js
+import {request} from "../../request/index.js";
+import {config} from "../../request/config.js";
+
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-
+        current: 0,
+        goodsId:0,      //商品主键id
+        obj:{},     //当前商品
+        swiperList:[]      //当前商品的图片数组
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad(options) {
-
+    onLoad:function(options) {
+        const id = options.id;
+        this.setData({
+            goodsId:id
+        })
+        //获取当前商品
+        this.getDetail(id);
     },
 
     /**
-     * 生命周期函数--监听页面初次渲染完成
+     * 获取当前商品
      */
-    onReady() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload() {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh() {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom() {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage() {
-
+    getDetail(id){
+        request({url:'/goodsInfo/'+id}).then(res => {
+            if(res.code === '0'){
+                let obj = res.data;
+                let swiperList = [];
+                if(obj.fields){
+                    let list = JSON.parse(obj.fields);
+                    list.forEach(item => {
+                        let imgObj = {};
+                        imgObj.fields = item;
+                        imgObj.imgSrc = config.baseFileUrl+item;
+                        swiperList.push(imgObj);
+                    })
+                }
+                if(swiperList.length === 0){
+                    swiperList.push({imgSrc:"../../imgs/default.png"});
+                    swiperList.push({imgSrc:"../../imgs/default.png"});
+                }
+                this.setData({
+                    obj,
+                    swiperList
+                })
+            }else{
+                wx.showToast({
+                  title: res.msg,
+                  icon:'none'
+                })
+            }
+        })
     }
 })

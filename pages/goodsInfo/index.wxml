@@ -1,2 +1,12 @@
-<!--pages/goodsInfo/index.wxml-->
-<text>pages/goodsInfo/index.wxml</text>
+<view class="nx_detail">
+    <!-- 轮播图 -->
+    <view class="nx_swiper">
+    <swiper autoplay indicator-dots circular interval="2000">
+        <swiper-item wx:for="{{swiperList}}" wx:key="id">
+            <navigator>
+                <image src="{{item.imgSrc}}"></image>
+            </navigator>
+        </swiper-item>
+    </swiper>
+  </view>
+</view>
