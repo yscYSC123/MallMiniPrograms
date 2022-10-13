@@ -61,6 +61,12 @@ Page({
 
     //放入购物车
     handleartAdd(){
-        
+        let user = wx.getStorageSync('user');
+        if(!user){
+            wx.navigateTo({
+              url: '/pages/login/index?isTabBar=0&url=/pages/goodsInfo/index$id-'+this.data.goodsId
+            })
+            return;
+        }
     }
 })
