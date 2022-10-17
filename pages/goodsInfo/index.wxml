@@ -35,6 +35,6 @@
 
     <!-- 底部工具栏 -->
     <view class="footer_tool">
-        <view class="order_pay_wrap" bindtap="handleartAdd">加入购物车</view>
+        <view class="order_pay_wrap" bindtap="handleCartAdd">加入购物车</view>
     </view>
 </view>

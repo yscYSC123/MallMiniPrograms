@@ -60,7 +60,7 @@ Page({
     },
 
     //放入购物车
-    handleartAdd(){
+    handleCartAdd(){
         let user = wx.getStorageSync('user');
         if(!user){
             wx.navigateTo({
@@ -68,5 +68,18 @@ Page({
             })
             return;
         }
+        let data ={userid:user.id,level:user.level,goodsid:this.data.goodsId,count:1};
+        request({url:"/cartInfo",data:data,method:"POST"}).then(res => {
+            if(res.code === "0"){
+                wx.showToast({
+                    title:'加入购物车成功',
+                })
+            }else{
+                wx.showToast({
+                    title:res.msg,
+                    icon:"error"
+                })
+            }
+        })
     }
 })
