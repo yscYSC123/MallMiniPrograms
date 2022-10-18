@@ -1,66 +1,57 @@
-// pages/cartInfo/index.js
+import {request} from "../../request/index.js";
+import {config} from "../../request/config.js";
+
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-
+        defaultImageUrl:'../../imgs/default.png',
+        cart:{},
+        totalPrice:0,
+        totalNum:0
+    },
+    
+    /**
+     * 监听函数
+     */
+    onShow: function () {
+        this.getCartInfo();
     },
 
     /**
-     * 生命周期函数--监听页面加载
+     * 获取购物车的商品列表
      */
-    onLoad(options) {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload() {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh() {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom() {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage() {
-
+    getCartInfo(){
+        let user = wx.getStorageSync('user');
+        if(!user){
+            wx.navigateTo({
+              url: '/pages/login/index?isTabBar=1&url=/pages/cartInfo/index'
+            })
+            return;
+        }
+        request({url:'/cartInfo?userId='+user.id}).then(res => {
+            if(res.code === '0'){
+                let cartList = res.data;
+                let totalPrice = 0;
+                let totalNum  = 0;
+                cartList.forEach(item => {
+                    totalNum += item.count;
+                    totalPrice += item.count * item.price * item.discount;
+                    let imgSrc = this.data.defaultImageUrl;
+                    if(item.fields){
+                        let fields = JSON.parse(item.fields)[0];
+                        imgSrc = config.baseFileUrl + fields;
+                    }
+                    item.url = imgSrc;
+                })
+                this.setData({
+                    cart:cartList,
+                    totalNum:totalNum,
+                    totalPrice:totalPrice.toFixed(2)
+                })
+            }
+        })
     }
 })
