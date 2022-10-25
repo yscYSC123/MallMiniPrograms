@@ -53,5 +53,64 @@ Page({
                 })
             }
         })
+    },
+
+    //商品数量的编辑功能
+    handleItemNumEdit(e){
+        //获取传来的参数
+        const {operation,id} = e.currentTarget.dataset;
+        //获取购物车数组
+        let cart = this.data.cart;
+        //获取到需要修改的商品的索引
+        const index = cart.findIndex(v => v.id === id);
+        //判断是否要删除
+        if(cart[index].count === 1 && operation === -1){
+            wx.showModal({
+              content:'您是否要删除该商品',
+              success:(res) => {
+                  if(res.confirm){
+                    let user = wx.getStorageSync('user');
+                    request({url:'/cartInfo/goods/' + user.id + '/' + id,method:'DELETE'}).then(res => {
+                        if(res.code === '0'){
+                            let cart = this.data.cart;
+                            cart.splice(index,1);
+                            let totalPrice = 0;
+                            let totalNum  = 0;
+                            cart.forEach(item => {
+                                totalNum += item.count;
+                                totalPrice += item.count * item.price * item.discount;
+                            })
+                            this.setData({
+                                cart:cart,
+                                totalNum:totalNum,
+                                totalPrice:totalPrice.toFixed(2)
+                            })
+                        }
+                    })
+                  }else{
+                      wx.showToast({
+                        title: res.msg,
+                        icon:'error'
+                      })
+                  }
+              }
+            })
+        }else{
+            //修改数量
+            let cart = this.data.cart;
+            cart[index].count += operation;
+            //重新计算总价和总量
+            let totalPrice = 0;
+            let totalNum  = 0;
+            cart.forEach(item => {
+                totalNum += item.count;
+                 totalPrice += item.count * item.price * item.discount;
+            })
+            this.setData({
+                cart:cart,
+                totalNum:totalNum,
+                totalPrice:totalPrice.toFixed(2)
+            })
+        }
     }
 })
