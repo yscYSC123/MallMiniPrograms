@@ -5,7 +5,8 @@
         "pages/goodsInfo/index",
         "pages/cartInfo/index",
         "pages/user/index",
-        "pages/login/index"
+        "pages/login/index",
+        "pages/orderInfo/index"
     ],
     "window": {
         "backgroundTextStyle": "light",

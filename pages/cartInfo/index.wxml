@@ -32,5 +32,5 @@
         <text style="margin-left: 30rpx;">(包含运费)</text>
         <view>共<text style="margin-right: 10rpx; margin-left: 10rpx; color: blue;">{{totalNum}}</text>件</view>
     </view>
-    <view class="order_pay_wrap">提交订单</view>
+    <view class="order_pay_wrap" bindtap="handlePay">提交订单</view>
 </view>

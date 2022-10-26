@@ -112,5 +112,36 @@ Page({
                 totalPrice:totalPrice.toFixed(2)
             })
         }
+    },
+
+    /**
+     * 下单
+     */
+    handlePay(){
+        if(this.data.cart.length === 0){
+            wx.showToast({
+              title: '购物车空空如也',
+              icon:'none'
+            })
+            return;
+        }
+        let user = wx.getStorageSync('user');
+        let data = {userid:user.id,level:user.level,totalPrice:this.data.totalPrice,goodsList:this.data.cart}
+        request({url:'/orderInfo',method:'Post',data:data}).then(res => {
+            if(res.code === '0'){
+                wx.showToast({
+                  title: '提交订单成功，请付款',
+                })
+                //跳转到支付页面
+                wx.navigateTo({
+                  url: '/pages/orderInfo/index?status=待付款',
+                })
+            }else{
+                wx.showToast({
+                  title: res.msg,
+                  icon:'error'
+                })
+            }
+        })
     }
 })
