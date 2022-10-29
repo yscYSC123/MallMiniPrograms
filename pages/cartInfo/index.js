@@ -126,7 +126,7 @@ Page({
             return;
         }
         let user = wx.getStorageSync('user');
-        let data = {userid:user.id,level:user.level,totalPrice:this.data.totalPrice,goodsList:this.data.cart}
+        let data = {userid:user.id,level:user.level,totalprice:this.data.totalPrice,goodsList:this.data.cart}
         request({url:'/orderInfo',method:'Post',data:data}).then(res => {
             if(res.code === '0'){
                 wx.showToast({
@@ -134,7 +134,7 @@ Page({
                 })
                 //跳转到支付页面
                 wx.navigateTo({
-                  url: '/pages/orderInfo/index?status=待付款',
+                  url: '/pages/orderInfo/index?state=待付款',
                 })
             }else{
                 wx.showToast({

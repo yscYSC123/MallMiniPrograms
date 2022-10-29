@@ -61,5 +61,23 @@ Page({
                 avatarUrl:avatarUrl
             })
         }
+    },
+
+    /**
+     * 转向订单列表页面
+     */
+    navigateToOrder(e){
+        let user = wx.getStorageSync('user');
+        if(!user){
+            wx.showToast({
+              title: '请先登录',
+              icon:'none'
+            })
+        }else{
+            let state = e.currentTarget.dataset.state;
+            wx.navigateTo({
+              url: '/pages/orderInfo/index?state='+state
+            })
+        }
     }
 })

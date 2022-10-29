@@ -10,3 +10,27 @@
         <button open-type="getUserInfo" bindgetuserinfo="getUserInfo">登录</button>
     </view>
 </view>
+
+<view class="user_content">
+    <view class="user_main">
+        <view class="orders_wrap">
+            <view class="orders_title">
+                我的订单
+            </view>
+            <view class="orders_content">
+                <view class="navigator" bindtap="navigateToOrder" data-state="all">
+                    <view class="order_name">全部订单</view>
+                </view>
+                <view class="navigator" bindtap="navigateToOrder" data-state="待付款">
+                    <view class="order_name">待付款</view>
+                </view>
+                <view class="navigator" bindtap="navigateToOrder" data-state="待收货">
+                    <view class="order_name">待收货</view>
+                </view>
+                <view class="navigator" bindtap="navigateToOrder" data-state="完成">
+                    <view class="order_name">退款/退货</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

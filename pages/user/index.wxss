@@ -48,3 +48,37 @@ page {
     padding: 30rpx;
     border-radius: 10rpx;
 }
+
+.user_content{
+    position: relative;
+}
+
+.user_content .user_main{
+    padding-bottom: 100rpx;
+    color: #666666;
+    position: absolute;
+    width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -40rpx;
+}
+
+.user_content .user_main .orders_wrap{
+    background-color: white;
+    margin-top: 30rpx;
+}
+
+.user_content .user_main .orders_wrap .orders_title{
+    padding: 20rpx;
+    border-bottom: 1rpx solid #ccc;
+}
+
+.user_content .user_main .orders_wrap .orders_content{
+    display: flex;
+}
+
+.user_content .user_main .orders_wrap .orders_content .navigator{
+    padding: 15rpx 0;
+    flex: 1;
+    text-align: center;
+}

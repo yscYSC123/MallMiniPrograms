@@ -1,66 +1,53 @@
-// pages/orderInfo/index.js
+import {request} from "../../request/index.js";
+import {config} from "../../request/config.js";
+
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-
+        state:"",       //订单状态
+        dataList:[]       //订单列表
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
+        const state = options.state;
+        this.setData({
+            state: state
+        })
+        this.getOrderData(state);
     },
 
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload() {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh() {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom() {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage() {
-
+    getOrderData(state){
+        let user = wx.getStorageSync('user');
+        let url = "/orderInfo/page/front?pageNum=1&pageSize=100&userId="+user.id;
+        if(state != "all"){
+            url = url + "&state=" + state;
+        }
+        request({url:url}).then(res => {
+            if(res.code === '0'){
+                let list = res.data.list;
+                list.forEach((item,index) => {
+                    let goodsInfo = item.goodsList[0];
+                    let imgSrc = "../../imgs/default.png"
+                    if(goodsInfo.fields){
+                        let fields = JSON.parse(goodsInfo.fields);
+                        if(fields.length){
+                            imgSrc = config.baseFileUrl + fields[0];
+                        }
+                    }
+                    item.url = imgSrc;
+                    item.count = item.goodsList.length;
+                    item.description = goodsInfo.description;
+                })
+                this.setData({
+                    dataList:list
+                })
+            }
+        })
     }
 })
