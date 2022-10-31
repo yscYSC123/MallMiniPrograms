@@ -49,5 +49,33 @@ Page({
                 })
             }
         })
+    },
+
+    /**
+     * 付款或取消
+     */
+    payGoods(e){
+        let id = e.currentTarget.dataset.id;
+        let state = e.currentTarget.dataset.state;
+        request({url:"/orderInfo/state/"+id+"/"+state,method:"POST"}).then(res => {
+            if(res.code === '0'){
+                wx.showToast({
+                  title: '操作成功',
+                })
+                this.getOrderData(this.data.state);
+            }else{
+                wx.showToast({
+                  title: res.msg,
+                  icon:"none"
+                })
+            }
+        })
+    },
+
+    /**
+     * 删除订单
+     */
+    deleteOrder(e){
+        
     }
 })

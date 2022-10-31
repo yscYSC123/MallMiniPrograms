@@ -27,7 +27,7 @@
                 <view class="navigator" bindtap="navigateToOrder" data-state="待收货">
                     <view class="order_name">待收货</view>
                 </view>
-                <view class="navigator" bindtap="navigateToOrder" data-state="完成">
+                <view class="navigator" bindtap="navigateToOrder" data-state="已收货">
                     <view class="order_name">退款/退货</view>
                 </view>
             </view>

@@ -20,8 +20,11 @@
                 </navigator>
 
                 <view style="text-align: right;padding: 20rpx;">
-                <text wx:if="{{item.state==='待付款'}}" style="background-color: orange;color: white;" class="btn" bindtap="payGoods" data-id="{{item.id}}" data-state="{{'待发货'}}">付款</text>
+                    <text wx:if="{{item.state==='待付款'}}" style="background-color: orange;color: white;" class="btn" bindtap="payGoods" data-id="{{item.id}}" data-state="{{'待发货'}}">付款</text>
                     <text wx:if="{{item.state==='待付款'}}" class="btn" bindtap="payGoods" data-id="{{item.id}}" data-state="{{'已取消'}}">取消</text>
+                    <text wx:if="{{item.state==='待收货'}}" style="background-color: orange;color: white;" class="btn" bindtap="payGoods" data-id="{{item.id}}" data-state="{{'已收货'}}">确认收货</text>
+                    <text wx:if="{{item.state==='已收货'}}" class="btn" bindtap="payGoods" data-id="{{item.id}}" data-state="{{'申请退货中'}}">退货</text>
+                    <text wx:if="{{item.state==='已收货' || item.state==='已取消' || item.state==='已退货'}}" class="btn" bindtap="deleteOrder" data-id="{{item.id}}">删除</text>
                 </view>
             </view>
         </block>
