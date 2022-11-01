@@ -82,3 +82,18 @@ page {
     flex: 1;
     text-align: center;
 }
+
+.user_content .user_main .app_info_wrap{
+    margin-top: 30rpx;
+    background-color: white;
+}
+
+.user_content .user_main .app_info_wrap .app_info_item{
+    padding: 20rpx;
+    border-bottom: 1rpx solid #ccc;
+}
+
+.user_content .user_main .app_info_wrap .app_info_contact{
+    display: flex;
+    justify-content: space-between;
+}

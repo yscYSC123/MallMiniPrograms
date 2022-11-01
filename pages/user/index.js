@@ -9,7 +9,7 @@ Page({
         isLogin:0,      //0未登录，1已登录
         userInfo:{},        //用户信息
         avatarUrl:'',       //头像
-        account:0      //用户余额
+        price:0      //用户余额
     },
 
     /**
@@ -61,6 +61,13 @@ Page({
                 avatarUrl:avatarUrl
             })
         }
+        request({url:"/userInfo/"+user.id}).then(res => {
+            if(res.code === "0"){
+                this.setData({
+                    price:res.data.account
+                })
+            }
+        })
     },
 
     /**
@@ -79,5 +86,12 @@ Page({
               url: '/pages/orderInfo/index?state='+state
             })
         }
+    },
+
+    /**
+     * 充值
+     */
+    recharge(){
+
     }
 })
