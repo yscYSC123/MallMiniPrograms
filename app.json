@@ -6,7 +6,8 @@
         "pages/cartInfo/index",
         "pages/user/index",
         "pages/login/index",
-        "pages/orderInfo/index"
+        "pages/orderInfo/index",
+        "pages/pay/index"
     ],
     "window": {
         "backgroundTextStyle": "light",

@@ -92,6 +92,16 @@ Page({
      * 充值
      */
     recharge(){
-
+        let user = wx.getStorageSync('user');
+        if(!user){
+            wx.showToast({
+              title: '请先登录',
+              icon:none
+            })
+        }else{
+            wx.navigateTo({
+              url: '/pages/pay/index',
+            })
+        }
     }
 })
