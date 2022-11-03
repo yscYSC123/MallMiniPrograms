@@ -5,7 +5,7 @@
         </block>
         <block wx:else>
             <view class="nx_line_item" wx:for="{{dataList}}" wx:key="key" wx:for-item="item">
-                <navigator style="display: flex;">
+                <navigator style="display: flex;" url="/pages/orderDetail/index?id={{item.id}}&&state={{item.state}}">
                     <view class="nx_line_left">
                         <image mode="scaleToFill" src="{{item.url}}"></image>
                     </view>

@@ -8,7 +8,7 @@ Page({
      */
     data: {
         defaultImageUrl:'../../imgs/default.png',
-        cart:{},
+        cart:[],
         totalPrice:0,
         totalNum:0
     },

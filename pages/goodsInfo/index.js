@@ -7,10 +7,10 @@ Page({
      * 页面的初始数据
      */
     data: {
-        current: 0,
         goodsId:0,      //商品主键id
         obj:{},     //当前商品
-        swiperList:[]      //当前商品的图片数组
+        swiperList:[],      //当前商品的图片数组
+        commentList:[]      //当前商品的评价
     },
 
     /**
@@ -23,6 +23,7 @@ Page({
         })
         //获取当前商品
         this.getDetail(id);
+        this.getComment(id);
     },
 
     /**
@@ -54,6 +55,24 @@ Page({
                 wx.showToast({
                   title: res.msg,
                   icon:'none'
+                })
+            }
+        })
+    },
+
+    /**
+     * 获取评价列表
+     */
+    getComment(goodsId){
+        request({url:"/commentInfo/all/"+goodsId}).then(res => {
+            if(res.code === '0'){
+                this.setData({
+                    commentList:res.data
+                })
+            }else{
+                wx.showToast({
+                  title: res.msg,
+                  icon:'error'
                 })
             }
         })

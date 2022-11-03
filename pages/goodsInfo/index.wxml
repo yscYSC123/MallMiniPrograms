@@ -33,6 +33,18 @@
         </view>
     </view>
 
+    <!-- 评价列表 -->
+    <view>
+        <view style="padding: 20rpx;background-color: white;font-size: 35rpx;font-weight: bold;">商品评价</view>
+        <view style="padding: 0 20rpx;background-color: white;" wx:for="{{commentList}}" wx:key="id">
+            <view style="padding: 15rpx 0;border-top: 1rpx solid #ccc;display: flex;">
+                <view style="flex: 5;padding: 10rpx;">{{item.userName}}</view>
+                <view style="flex: 5;padding: 10rpx; text-align: right;">{{item.createtime}}</view>
+            </view>
+            <view style="padding-left: 13rpx;padding-bottom: 10rpx;">{{item.content}}</view>
+        </view>
+    </view>
+
     <!-- 底部工具栏 -->
     <view class="footer_tool">
         <view class="order_pay_wrap" bindtap="handleCartAdd">加入购物车</view>

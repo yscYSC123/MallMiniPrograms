@@ -7,7 +7,9 @@
         "pages/user/index",
         "pages/login/index",
         "pages/orderInfo/index",
-        "pages/pay/index"
+        "pages/pay/index",
+        "pages/orderDetail/index",
+        "pages/comment/index"
     ],
     "window": {
         "backgroundTextStyle": "light",
