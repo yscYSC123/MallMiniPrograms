@@ -59,8 +59,8 @@ Page({
                     goodsInfoRecommendList.push({"name":"名称2","url":this.data.defaultImageUrl});
                     goodsInfoRecommendList.push({"name":"名称3","url":this.data.defaultImageUrl});
                 }else{
-                    if(goodsInfoRecommendList.length>6){
-                        goodsInfoRecommendList = goodsInfoRecommendList.slice(0,6);
+                    if(goodsInfoRecommendList.length>3){
+                        goodsInfoRecommendList = goodsInfoRecommendList.slice(0,100);
                     }
                     goodsInfoRecommendList.forEach(item => {
                         if(!item.fields||item.fields==='[]'){
@@ -93,7 +93,7 @@ Page({
                     goodsInfoHotList.push({"name":"名称2","url":this.data.defaultImageUrl});
                     goodsInfoHotList.push({"name":"名称3","url":this.data.defaultImageUrl});
                 }else{
-                    if(goodsInfoHotList.length>6){
+                    if(goodsInfoHotList.length>3){
                         goodsInfoHotList = goodsInfoHotList.slice(0,6);
                     }
                     goodsInfoHotList.forEach(item => {
@@ -128,7 +128,7 @@ Page({
                     goodsInfoGoodsList.push({"name":"名称3","url":this.data.defaultImageUrl});
                 }else{
                     if(goodsInfoGoodsList.length>6){
-                        goodsInfoGoodsList = goodsInfoGoodsList.slice(0,6);
+                        goodsInfoGoodsList = goodsInfoGoodsList.slice(0,100);
                     }
                     goodsInfoGoodsList.forEach(item => {
                         if(!item.fields||item.fields==='[]'){
