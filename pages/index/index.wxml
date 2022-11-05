@@ -10,6 +10,10 @@
         </swiper-item>
     </swiper>
   </view>
+  <!-- 搜索 -->
+  <view class="nx_congar">
+    <input class="input" bindtap="bindfocus" placeholder="请输入商品名称"/>
+  </view>
   <!-- 推荐商品 -->
     <view class="nx_congar">
         <view class="nx_congar_title">推荐商品列表</view>

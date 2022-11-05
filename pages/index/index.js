@@ -149,5 +149,14 @@ Page({
                 })
             }
         })
+    },
+
+    /**
+     * 搜索
+     */
+    bindfocus(){
+        wx.navigateTo({
+          url: '/pages/search/index',
+        })
     }
 });

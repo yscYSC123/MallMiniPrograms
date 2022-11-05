@@ -9,7 +9,8 @@
         "pages/orderInfo/index",
         "pages/pay/index",
         "pages/orderDetail/index",
-        "pages/comment/index"
+        "pages/comment/index",
+        "pages/search/index"
     ],
     "window": {
         "backgroundTextStyle": "light",
