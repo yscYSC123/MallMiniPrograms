@@ -76,6 +76,27 @@ Page({
      * 删除订单
      */
     deleteOrder(e){
-        
+        let id = e.currentTarget.dataset.id;
+        wx.showModal({
+            content:'您是否要删除该订单',
+            success:(res) => {
+                    if(res.confirm){
+                    request({url:'/orderInfo/' + id,method:'DELETE'}).then(res => {
+                        if(res.code === '0'){
+                            let list = this.data.dataList;
+                            this.setData({
+                                dataList:list
+                            });
+                         }
+                         this.getOrderData("all");
+                    });
+                }else{
+                    wx.showToast({
+                      title: res.msg,
+                      icon:'error'
+                    })
+                }
+            }
+        })
     }
 })
